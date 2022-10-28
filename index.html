@@ -30,33 +30,40 @@
     <div class="sidebarContainer">
       <div class="sidebarContent">
         <h3>Escolha um contato para enviar mensagem:</h3>
-        <div>
-          <ion-icon name="people"></ion-icon>
-          <p>Todos</p>
+        <div onclick="check(this)">
+          <div>
+            <ion-icon name="people"></ion-icon>
+            <p>Todos</p>
+          </div>
+          <ion-icon class="checked" name="checkmark-outline"></ion-icon>
+
         </div>
-        <div>
-          <ion-icon name="person-circle"></ion-icon>
-          <p>Todos</p>
-        </div>
-        <div>
-          <ion-icon name="person-circle"></ion-icon>
-          <p>Todos</p>
+        <div class="participantes">
+         
         </div>
         <h3>Escolha a visibilidade:</h3>
-        <div>
+        <div onclick="check(this)">
+          <div>
           <ion-icon name="lock-open"></ion-icon>
           <p>Público</p>
         </div>
-        <div>
+          <ion-icon class="checked" name="checkmark-outline"></ion-icon>
+          
+        </div>
+        <div onclick="check(this)">
+          <div>
           <ion-icon name="lock-closed"></ion-icon>
           <p>Reservadamente</p>
+           </div>
+          <ion-icon class="checked" name="checkmark-outline"></ion-icon>
+       
         </div>   
       </div>
     </div>
 
     <div class="footer">
       <input class="typedMessage" type="textarea" placeholder="Escreva aqui...">
-      <ion-icon class="send" name="paper-plane-outline" onclick="addMessage()"></ion-icon>
+      <ion-icon class="send" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
     </div>
   </div>
  

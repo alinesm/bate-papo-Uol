@@ -28,6 +28,7 @@ body{
   z-index: 2;
   top: 0;
   display: none;  
+  overflow-y: auto;
   /* display: block; */
 
 }
@@ -42,12 +43,40 @@ body{
   padding: 17px;
   height: 100%;
   margin-left: 115px;
-  position: sticky;
+  /* position: sticky; */
 
 }
 .sidebarContent div{
   display: flex;
+  justify-content: space-between;
+
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+}
+
+.participantes{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.participantes div{
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.checkMark{
+  color: white;
+}
+
+.checked ion-icon{
+  color: green
+}
+
+.checked .onlineParticipant p,
+.checked .iconPerson {
+  color: black;
 }
 
 h3{
@@ -170,3 +199,4 @@ input::placeholder{
   right: 18px;
   bottom: 25px;
 }
+

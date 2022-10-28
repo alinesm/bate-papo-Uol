@@ -83,4 +83,22 @@ function keepConnected() {
   }, 5000);
 }
 
-keepConnected()
+keepConnected();
+
+function sendMessage(){
+
+  const typedMessage = document.querySelector('.typedMessage').value;
+  
+  const newMessage = {
+    from: userName,
+    to: "todos",
+    text: typedMessage,
+    type: "message", 
+  };
+  
+  axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', newMessage)
+  .then(res => {console.log("Sucesso no POST: ",res)})
+  .catch(() => {window.location.reload()})
+
+  document.querySelector('.typedMessage').value = "";
+}
