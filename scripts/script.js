@@ -19,3 +19,59 @@ function enterError(error) {
   } 
   window.location.reload()
 }
+
+function getMessages() { 
+  const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+  promise.then(messagesResponse); 
+}
+
+let chats = []
+function messagesResponse(response){  
+  chats = response.data;  
+  renderMessages();
+}
+
+setInterval(getMessages, 3000);
+
+function renderMessages() {
+  const listaReceitas = document.querySelector('.chatContent');
+  listaReceitas.innerHTML = '';
+  
+  for (let i = 0; i < chats.length; i++) {
+      let chat = chats[i];            
+      if (chat.type === "status"){
+         listaReceitas.innerHTML += `
+          <div class="message status-message">
+             <p class="time">(${chat.time})</p>      
+              <p class="name">${chat.from}</p>
+              <p>${chat.text}</p>               
+          </div>
+      `;
+      } else if (chat.type === "private_message" || chat.to === userName){
+        listaReceitas.innerHTML += `
+        <div class="message private-message">
+           <p class="time">(${chat.time})</p>      
+            <p class="name">${chat.from}</p>
+            <p>reservadamente para</p>
+            <p class="name">${chat.to}:</p>
+            <p>${chat.text}</p>               
+        </div>
+    `;
+      } else {
+        listaReceitas.innerHTML += `
+        <div class="message">
+           <p class="time">(${chat.time})</p>      
+            <p class="name">${chat.from}</p>
+            <p>para</p>
+            <p class="name">${chat.to}:</p>
+            <p>${chat.text}</p>               
+        </div>
+    `;
+      }             
+  }
+
+  let scrollMessage = document.querySelector('.message:last-child')
+  if(scrollMessage) {
+    scrollMessage.scrollIntoView()
+  }    
+}
