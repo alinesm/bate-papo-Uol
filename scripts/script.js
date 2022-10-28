@@ -75,3 +75,12 @@ function renderMessages() {
     scrollMessage.scrollIntoView()
   }    
 }
+
+function keepConnected() {
+  setInterval(() => {
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/status", { name: userName })
+    .then((resposta) => console.log(resposta.status));
+  }, 5000);
+}
+
+keepConnected()
