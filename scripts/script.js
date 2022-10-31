@@ -124,7 +124,9 @@ function closeSidebar(){
   sibeBar.classList.remove("openSidebarContainer")
   
   const visibilities = document.querySelector(".visibilityOption.checked")
-  visibilities.classList.remove("checked")
+  visibilities?.classList.remove("checked")
+
+  sendTo()
 }
 
 function renderParticipants(){
@@ -152,6 +154,8 @@ function renderParticipants(){
   }
 
 let participantSelected;
+let visibilitySelected;
+
 function checkParticipant(clicked) {
   document.querySelector(".privateTo").innerHTML = ""
   let participantSelectedBefore = document.querySelector(".participantes .checked")
@@ -160,18 +164,25 @@ function checkParticipant(clicked) {
   }  
   clicked.classList.add("checked")
   participantSelected =  document.querySelector(".participantes .checked").getElementsByTagName("p")[0].innerHTML
+  if(participantSelected === "Todos") {
+    visibilitySelected = "Público"
+    const visibilitiesCollection = document.getElementsByClassName("visibilityOption")
+    for (const element of visibilitiesCollection) {
+      if(element.innerText === "Público") {
+        element.classList.add("checked")
+      }
+    }
+  }
 }
 
-let visibilitySelected;
 function checkVisibilidade(clicked) {
   document.querySelector(".privateTo").innerHTML = ""
   let visibilitySelectedBefore = document.querySelector(".visibilities .checked")
   if (visibilitySelectedBefore !== null){      
     visibilitySelectedBefore.classList.remove('checked');
   }  
-  clicked.classList.add("checked")
-  visibilitySelected =  document.querySelector(".visibilities .checked").getElementsByTagName("p")[0].innerHTML
-  sendTo()
+    clicked.classList.add("checked")
+    visibilitySelected =  document.querySelector(".visibilities .checked").getElementsByTagName("p")[0].innerHTML
 }
 
 function sendTo() {
@@ -179,10 +190,9 @@ function sendTo() {
     document.querySelector(".privateTo").innerHTML += `Enviando para ${participantSelected} (Reservadamente)`
   } else if (participantSelected && visibilitySelected === "Público" && participantSelected !== "Todos") {
     document.querySelector(".privateTo").innerHTML += `Enviando para ${participantSelected} (Publicamente)`
-  } else if (participantSelected === "Todos") {
-    document.querySelector(".privateTo").innerHTML += `Enviando para Todos`
-  } else {
-    document.querySelector(".privateTo").innerHTML += `Enviando para Todos`
+  } 
+    else {
+      document.querySelector(".privateTo").innerHTML += `Enviando para Todos`
   }
 }
 
@@ -205,15 +215,7 @@ function sendMessage(){
       type: "message", 
     };
 
-  } else if(participantSelected === "Todos") {
-    newMessage = {
-      from: userName,
-      to: "todos",
-      text: typedMessage,
-      type: "message", 
-    };
-  }
-  else {
+  } else {
     newMessage = {
       from: userName,
       to: "todos",

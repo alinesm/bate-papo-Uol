@@ -24,19 +24,15 @@ body{
 }
 
 .sidebarContainer{
-  background-color: white;
   width: 375px;
   background: rgba(0, 0, 0, 0.6);
   height: 100%;
   position: absolute;
   z-index: 2;
   top: 0;
-  overflow-y: auto;
   display: none;
-  overflow-x: hidden;
-
-
 }
+
 ion-icon{
   cursor: pointer;
 }
@@ -44,6 +40,7 @@ ion-icon{
 .shadowContainer{
   height: 100%;
   width: 120px;
+  cursor: pointer;
 
 }
 
@@ -63,6 +60,7 @@ ion-icon{
   padding: 17px;
   height: 100%;
   margin-left: 115px;
+  overflow: auto;
 
 }
 .sidebarContent div{
@@ -171,6 +169,7 @@ ion-icon{
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  word-break: break-all;
   min-height: 40px;
   background-color: white;
   margin-bottom: 4px;
