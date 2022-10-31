@@ -1,5 +1,4 @@
-// let userName = prompt("enter with your userName")
-let userName = "babaa"
+let userName = prompt("enter with your userName")
 
 enterChat()
 
@@ -15,10 +14,10 @@ function enterSuccess(response) {
 
 function enterError(error) {
   console.log(error); 
-  // if(error.response.status === 400){
-  //   alert("Choose other userName")
-  // } 
-  // window.location.reload()
+  if(error.response.status === 400){
+    alert("Choose other userName")
+  } 
+  window.location.reload()
 }
 
 function getMessages() { 
