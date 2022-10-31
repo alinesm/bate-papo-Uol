@@ -2,6 +2,7 @@
 
 * {
   box-sizing: border-box;
+
 }
 
 *:focus {
@@ -11,12 +12,15 @@
 body{
   background-color: gray;
   font-family: 'Roboto';
+
 }
 
 .chatContainer{
   width: 375px;
   margin: auto;
   background-color: #E5E5E5;
+  overflow-x: hidden;
+
 }
 
 .sidebarContainer{
@@ -27,31 +31,43 @@ body{
   position: absolute;
   z-index: 2;
   top: 0;
-  display: none;  
   overflow-y: auto;
-  /* display: block; */
+  display: none;
+  overflow-x: hidden;
+
+
+}
+ion-icon{
+  cursor: pointer;
+}
+
+.shadowContainer{
+  height: 100%;
+  width: 120px;
 
 }
 
 .openSidebarContainer{
-  display: block;
+  display: flex;
+}
+
+.closeSidebar{
+  display: none;
 }
 
 .sidebarContent{
   background-color: white;
+  top: 0;
+  position: absolute;
   width: 259px;
   padding: 17px;
   height: 100%;
   margin-left: 115px;
-  /* position: sticky; */
 
 }
 .sidebarContent div{
   display: flex;
   justify-content: space-between;
-
-  /* justify-content: flex-start; */
-  /* align-items: center; */
 }
 
 .participantes{
@@ -67,16 +83,37 @@ body{
 }
 
 .checkMark{
-  color: white;
+  color: white;  
+  width: 4px;
 }
 
 .checked ion-icon{
   color: green
 }
 
+.onlineParticipant{
+  cursor: pointer;
+}
+
 .checked .onlineParticipant p,
-.checked .iconPerson {
+.checked .iconPerson,
+.checked .visibilityOption p,
+.checked .unlockIcon,
+.checked .lockIcon,
+.checked .everybody {
   color: black;
+}
+
+.visibilities{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.visibilityOption div{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 h3{
@@ -91,6 +128,7 @@ h3{
   padding: 15px 25px;
   color: #000000;
 }
+
 
 .sidebarContainer ion-icon {
   width: 24px;
@@ -126,6 +164,7 @@ ion-icon{
  height: 590px;
  overflow-y: scroll;
  padding-top: 110px;
+ overflow-x: hidden;
 }
 
 .message{
@@ -200,3 +239,20 @@ input::placeholder{
   bottom: 25px;
 }
 
+.privateTo{
+  bottom: 12px;
+  left: 15px;
+  position: absolute;
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.openPrivateTo{
+  color: black;
+}

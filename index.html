@@ -28,43 +28,36 @@
     </div>
 
     <div class="sidebarContainer">
+      <div class="shadowContainer" onclick="closeSidebar()" ></div>
       <div class="sidebarContent">
-        <h3>Escolha um contato para enviar mensagem:</h3>
-        <div onclick="check(this)">
-          <div>
-            <ion-icon name="people"></ion-icon>
-            <p>Todos</p>
-          </div>
-          <ion-icon class="checked" name="checkmark-outline"></ion-icon>
+    
+        <div class="participantes"></div>
 
-        </div>
-        <div class="participantes">
-         
-        </div>
         <h3>Escolha a visibilidade:</h3>
-        <div onclick="check(this)">
-          <div>
-          <ion-icon name="lock-open"></ion-icon>
-          <p>Público</p>
+        <div class="visibilities" >
+          <div class="visibilityOption" onclick="checkVisibilidade(this)">
+            <div>
+              <ion-icon class="unlockIcon" name="lock-open"></ion-icon>
+              <p>Público</p>
+            </div>
+            <ion-icon class="checkMark" name="checkmark-outline"></ion-icon>
+          </div>
+          <div class="visibilityOption" onclick="checkVisibilidade(this)">
+            <div>
+              <ion-icon class="lockIcon" name="lock-closed"></ion-icon>
+              <p>Reservadamente</p>
+            </div>
+            <ion-icon class="checkMark" name="checkmark-outline"></ion-icon>
+         </div>   
         </div>
-          <ion-icon class="checked" name="checkmark-outline"></ion-icon>
-          
-        </div>
-        <div onclick="check(this)">
-          <div>
-          <ion-icon name="lock-closed"></ion-icon>
-          <p>Reservadamente</p>
-           </div>
-          <ion-icon class="checked" name="checkmark-outline"></ion-icon>
-       
-        </div>   
       </div>
     </div>
 
     <div class="footer">
-      <input class="typedMessage" type="textarea" placeholder="Escreva aqui...">
-      <ion-icon class="send" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
-    </div>
+        <input class="typedMessage" type="textarea" placeholder="Escreva aqui...">
+        <ion-icon class="send" name="paper-plane-outline" onclick="sendMessage()"></ion-icon>
+        <div class="privateTo"></div>
+      </div>
   </div>
  
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
